@@ -4,18 +4,21 @@ terraform {
   }
  
   provider google {
-    project = var.project_id
-    region = var.region
+    project = kaigo-fikapoc01
+    region = asia-northeast1
   }
  
-  state {
-    backend = "gcs"
-    bucket = var.state_bucket
-    prefix = "terraform/state"
-  }
+ # state {
+ #   backend = "gcs"
+ #   bucket = var.state_bucket
+ #   prefix = "terraform/state"
+ # }
  
-  resource "google_api_gateway_gateway" "my_gateway" {
-    api_config = "projects/my-project/locations/global/apis/my-api/configs/my-config"
-    gateway_id = "my-gateway"
+  resource "google_storage_bucket" "auto-expire" {
+  name          = "terraformpocfika-bucket"
+  location      = "US"
+  force_destroy = true
+
+  public_access_prevention = "enforced"
   }
 }
