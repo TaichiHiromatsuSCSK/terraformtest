@@ -1,6 +1,6 @@
 provider "google" {
-  project = kaigofika-poc01
-  region  = asia-northeast1
+  project = "kaigofika-poc01"
+  region  = "asia-northeast1"
 }
 
 #terraform {
